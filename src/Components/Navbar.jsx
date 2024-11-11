@@ -33,16 +33,16 @@ function Navbar() {
 
             <div className="flex justify-center items-center gap-2">
               <NavLink to="#">
-                <li className="list-none"><i className="fa-brands fa-linkedin text-2xl"></i></li>
+                <li className=" text-blue-600 list-none"><i className="fa-brands fa-linkedin text-2xl"></i></li>
               </NavLink>
               <NavLink to="#">
-                <li className="list-none"><i className="fa-brands fa-instagram text-2xl"></i></li>
+                <li className=" text-pink-600 list-none"><i className="fa-brands fa-instagram text-2xl"></i></li>
               </NavLink>
               <NavLink to="#">
-                <li className="list-none"><i className="fa-brands fa-square-x-twitter text-2xl"></i></li>
+                <li className=" text-blue-400 list-none"><i className="fa-brands fa-square-x-twitter text-2xl"></i></li>
               </NavLink>
               <NavLink to="#">
-                <li className="list-none"><i className="fa-brands fa-github text-2xl"></i></li>
+                <li className=" text-orange-400 list-none"><i className="fa-brands fa-github text-2xl"></i></li>
               </NavLink>
             </div>
 
