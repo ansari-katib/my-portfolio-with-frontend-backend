@@ -35,7 +35,7 @@ function Contact() {
     };
 
     return (
-        <section id="contact" className="py-12 bg-gray-100">
+        <section id="contact" className="py-12 bg-gray-400">
             <div className="absolute top-2 left-4 ">
                 {/* Back to Home Button */}
                 <Link

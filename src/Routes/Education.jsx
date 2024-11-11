@@ -34,7 +34,7 @@ function Education() {
           </Link>
         </div>
       <h2 className="text-3xl font-bold text-center text-indigo-600 mb-8">Education</h2>
-      <div className="container mx-auto">
+      <div className="container w-[90%] mx-auto">
         {educationDetails.map((edu, index) => (
           <div key={index} className="bg-gray-300 rounded-lg shadow-lg mb-8 p-6 hover:shadow-xl transition-shadow duration-300">
             <h3 className="text-2xl font-semibold text-gray-800">{edu.degree}</h3>
