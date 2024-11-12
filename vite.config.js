@@ -5,4 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   assetsInclude: ['**/*.svg', '**/*.js'],
   plugins: [react()],
+   server: {
+    open: true, // Automatically open the browser
+  },
 })
