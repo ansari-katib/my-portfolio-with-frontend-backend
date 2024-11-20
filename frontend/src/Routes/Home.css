@@ -1,0 +1,52 @@
+
+/* my image animation and shadow  */
+.border-gradient {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+    background-size: 300% 300%;
+    border-radius: inherit;
+    box-shadow: 0px 0px 20px  rgb(170, 97, 222) ; 
+  }
+  
+  .animate-border {
+    animation: gradientBorderAnimation 4s ease infinite;
+  }
+  
+  @keyframes gradientBorderAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+
+  /* text animation */
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 100%;
+    }
+    100% {
+      width: 0;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  .animate-typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(30, end) infinite, blink 0.7s step-end infinite;
+  }
+  
