@@ -34,8 +34,7 @@ app.post('/api/contact', (req, res) => {
         from: email,
         to: process.env.GMAIL_USER,
         subject: subject,
-        text: `You have received a new message from your Portfolio form:
-
+        text: `You have received a new message from your Portfolio :
         Name: ${name}
         Email: ${email}
         Message: ${message}

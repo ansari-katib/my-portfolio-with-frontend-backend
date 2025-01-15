@@ -1,47 +1,55 @@
 import React from 'react'
-import Navbar from './Components/Navbar'
-import Home from './Routes/Home'
-import Education from './Routes/Education'
-import Experience from './Routes/Experience'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Projects from './Routes/Projects'
-import Footer from './Components/Footer'
-import Contact from './Routes/Contact'
-import AboutMe from './Routes/AboutMe'
+import { BrowserRouter as Router , Routes , Route } from 'react-router-dom'
+
+import EducationPage from './Routes/Education'
+import HomePage from './Routes/Home'
+import ExperiencePage from './Routes/Experience'
+import ProjectsPage from './Routes/Projects'
+import ContactPage from './Routes/Contact'
+import AboutMePage from './Routes/AboutMe'
 
 function App() {
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <> <Navbar /> <Home />  <Footer /> </>
-    },
-    {
-      path: "/education",
-      element: <> <Navbar /> <Education /> <Footer />  </>
-    },
-    {
-      path: "/experience",
-      element: <> <Navbar /> <Experience /> <Footer /> </>
-    },
-    {
-      path: "/projects",
-      element: <> <Navbar /> <Projects /> <Footer /> </>
-    },
-    {
-      path: "/contact",
-      element: <> <Navbar /> <Contact /> <Footer /> </>
-    },
-    {
-      path: "/about",
-      element: <> <Navbar /> <AboutMe /> <Footer /> </>
-    }
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <> <Navbar /> <Home />  <Footer /> </>
+  //   },
+  //   {
+  //     path: "/education",
+  //     element: <> <Navbar /> <Education /> <Footer />  </>
+  //   },
+  //   {
+  //     path: "/experience",
+  //     element: <> <Navbar /> <Experience /> <Footer /> </>
+  //   },
+  //   {
+  //     path: "/projects",
+  //     element: <> <Navbar /> <Projects /> <Footer /> </>
+  //   },
+  //   {
+  //     path: "/contact",
+  //     element: <> <Navbar /> <Contact /> <Footer /> </>
+  //   },
+  //   {
+  //     path: "/about",
+  //     element: <> <Navbar /> <AboutMe /> <Footer /> </>
+  //   }
 
-  ])
+  // ])
 
   return (
     <>
-      <RouterProvider router={router} />
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage /> } />
+        <Route path='/education' element={<EducationPage /> } />
+        <Route path='/experience' element={<ExperiencePage /> } />
+        <Route path='/projects' element={<ProjectsPage /> } />
+        <Route path='/contact' element={<ContactPage /> } />
+        <Route path='/about' element={<AboutMePage /> } />
+      </Routes>
+    </Router>
     </>
   )
 }

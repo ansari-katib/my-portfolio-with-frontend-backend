@@ -1,15 +1,49 @@
-# Frontend specific
-frontend/node_modules/
-frontend/build/
-frontend/dist/
+# Node.js and general project files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
 
-# Backend specific
-backend/node_modules/
-backend/logs/
-backend/*.log
-
-# Other common rules
+# Logs
+logs/
 *.log
+npm-debug.log*
+
+# OS generated files
 .DS_Store
+Thumbs.db
+
+# IDE or Editor files
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Frontend (React / Vite) specific
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/vite.config.js
+
+# Backend (Node.js / Express) specific
+backend/node_modules/
+backend/.env
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
+backend/pids/
+backend/*.pid
+backend/*.log
+backend/debug/
