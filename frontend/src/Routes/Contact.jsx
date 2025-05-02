@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
+import axios from "axios";
 import { ContactSchema } from "../Schemas/contactForm";
 
 import Navbar from "../Components/Navbar";
@@ -15,7 +16,7 @@ const initialValues = {
 
 function Contact() {
   const [loading, setLoading] = useState(false);
-  const [feedback, setFeedback] = useState(""); // For success or failure feedback
+  const [feedback, setFeedback] = useState("");
 
   const {
     values,
@@ -26,31 +27,31 @@ function Contact() {
     handleBlur,
     handleChange,
     handleSubmit,
+    resetForm,
   } = useFormik({
     initialValues,
     validationSchema: ContactSchema,
-    onSubmit: async (values, action) => {
+    onSubmit: async (values) => {
       setLoading(true);
-      setFeedback(""); // Reset feedback message
+      setFeedback("");
 
       try {
-        const response = await fetch(`https://pbackend.up.railway.app/api/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        });
+        const response = await axios.post(
+          "https://pbackend.up.railway.app/api/contact",
+          values
+        );
 
-        if (response.ok) {
-          setFeedback("Message sent successfully! 🎉");
-          action.resetForm();
+        if (response.status === 200) {
+          setFeedback("✅ Message sent successfully!");
+          resetForm();
         } else {
-          setFeedback("Failed to send message. Please try again. 😞");
+          setFeedback("❌ Failed to send message. Please try again.");
         }
       } catch (error) {
-        console.error("Error submitting the form", error);
-        setFeedback("An error occurred. Please try again. 😞");
+        console.error("Form submission error:", error);
+        setFeedback("❌ Something went wrong. Please try again.");
       } finally {
-        setLoading(false); // Reset loading state
+        setLoading(false);
       }
     },
   });
@@ -58,29 +59,35 @@ function Contact() {
   return (
     <>
       <Navbar />
-      <section id="contact" className="py-12 bg-gray-800 dark:bg-gray-900 relative">
+      <section
+        id="contact"
+        className="py-12 bg-gray-800 dark:bg-gray-900 relative min-h-screen"
+      >
         <div className="absolute top-2 left-2">
-          {/* Back to Home Button */}
           <Link
             to="/"
             className="bg-indigo-600 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 flex items-center space-x-2"
-            >
-            {/* Font Awesome Icon */}
-            <i className="fas fa-arrow-left "></i>
+          >
+            <i className="fas fa-arrow-left"></i>
+            <span>Home</span>
           </Link>
         </div>
 
-        <h2 className="text-3xl font-bold text-center text-indigo-600 dark:text-indigo-400 mb-8">
+        <h2 className="text-3xl font-bold text-center text-indigo-500 dark:text-indigo-400 mb-8">
           Contact Me
         </h2>
+
         <div className="container mx-auto flex flex-col items-center">
-          {/* Contact Form */}
           <form
             onSubmit={handleSubmit}
             className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md"
           >
+            {/* Name Field */}
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 font-medium">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 dark:text-gray-300 font-medium"
+              >
                 Your Name
               </label>
               <input
@@ -91,16 +98,23 @@ function Contact() {
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
-                className="mt-2 p-3 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
+                  errors.name && touched.name
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
+                }`}
               />
               {errors.name && touched.name && (
-                <p className="text-red-500">{errors.name}</p>
+                <p className="text-red-500 mt-1 text-sm">{errors.name}</p>
               )}
             </div>
 
+            {/* Email Field */}
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 font-medium">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 dark:text-gray-300 font-medium"
+              >
                 Your Email
               </label>
               <input
@@ -111,16 +125,23 @@ function Contact() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
-                className="mt-2 p-3 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
+                  errors.email && touched.email
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
+                }`}
               />
               {errors.email && touched.email && (
-                <p className="text-red-500">{errors.email}</p>
+                <p className="text-red-500 mt-1 text-sm">{errors.email}</p>
               )}
             </div>
 
+            {/* Subject Field */}
             <div className="mb-4">
-              <label htmlFor="subject" className="block text-gray-700 dark:text-gray-300 font-medium">
+              <label
+                htmlFor="subject"
+                className="block text-gray-700 dark:text-gray-300 font-medium"
+              >
                 Subject
               </label>
               <input
@@ -131,48 +152,65 @@ function Contact() {
                 value={values.subject}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
-                className="mt-2 p-3 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
+                  errors.subject && touched.subject
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
+                }`}
               />
               {errors.subject && touched.subject && (
-                <p className="text-red-500">{errors.subject}</p>
+                <p className="text-red-500 mt-1 text-sm">{errors.subject}</p>
               )}
             </div>
 
+            {/* Message Field */}
             <div className="mb-4">
-              <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 font-medium">
+              <label
+                htmlFor="message"
+                className="block text-gray-700 dark:text-gray-300 font-medium"
+              >
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
+                rows="4"
                 autoComplete="off"
                 value={values.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
-                rows="4"
-                className="mt-2 p-3 w-full border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
+                  errors.message && touched.message
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
+                }`}
               />
               {errors.message && touched.message && (
-                <p className="text-red-500">{errors.message}</p>
+                <p className="text-red-500 mt-1 text-sm">{errors.message}</p>
               )}
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full p-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-400 transition duration-300"
-              disabled={!(isValid && dirty) || loading} // Disable button if loading
+              className="w-full p-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition duration-300 flex justify-center items-center"
+              disabled={!(isValid && dirty) || loading}
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? (
+                <span className="animate-pulse">Sending...</span>
+              ) : (
+                "Send Message"
+              )}
             </button>
 
+            {/* Feedback Message */}
             {feedback && (
               <p
-                className={`mt-4 text-center ${feedback.includes("successfully")
-                  ? "text-green-500"
-                  : "text-red-500"
-                  }`}
+                className={`mt-4 text-center text-sm font-medium ${
+                  feedback.startsWith("✅")
+                    ? "text-green-500"
+                    : "text-red-500"
+                }`}
               >
                 {feedback}
               </p>
