@@ -22,8 +22,27 @@ function Projects() {
             description: "A full-stack e-commerce website for fast food with user authentication, cart functionality, and interactive UI.",
             techStack: ["MERN Stack", "Bootstrap", "React hooks", "Express", "OAuth", "JWT"],
             link: "#"
+        },
+        {
+            title: "Real-Time Chat Application (Socket.io)",
+            description: "A real-time chat application built with Node.js, Express, and Socket.io for instant messaging and live communication.",
+            techStack: [  "Node.js", 
+                "Express", 
+                "Socket.io", 
+                "HTML", 
+                "CSS", 
+                "JavaScript", 
+                "JWT Tokens", 
+                "Multer", 
+                "MongoDB", 
+                "Zustand", 
+                "Axios", 
+                "Tailwind CSS", 
+                "ShadCN"],
+            link: "#", // Add actual link to project if available
         }
     ];
+    
 
     return (
         <>

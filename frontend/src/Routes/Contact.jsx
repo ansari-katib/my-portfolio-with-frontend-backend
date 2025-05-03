@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { ContactSchema } from "../Schemas/contactForm";
+import { TextField, Button, Typography, Container } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -13,6 +15,24 @@ const initialValues = {
   subject: "",
   message: "",
 };
+
+// Custom theme for the form colors
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#6200ea", // Your desired primary color
+    },
+    secondary: {
+      main: "#03dac6", // Your secondary color
+    },
+    error: {
+      main: "#d32f2f", // Error color
+    },
+    background: {
+      default: "#121212", // Dark background
+    },
+  },
+});
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -35,11 +55,14 @@ function Contact() {
       setLoading(true);
       setFeedback("");
 
+      console.log(values);
       try {
         const response = await axios.post(
           "https://pbackend.up.railway.app/api/contact",
+          // "http://localhost:5000/api/contact",
           values
         );
+
 
         if (response.status === 200) {
           setFeedback("✅ Message sent successfully!");
@@ -47,9 +70,9 @@ function Contact() {
         } else {
           setFeedback("❌ Failed to send message. Please try again.");
         }
+
       } catch (error) {
-        console.error("Form submission error:", error);
-        setFeedback("❌ Something went wrong. Please try again.");
+        setFeedback("❌ Something went wrong. Please try again.",error.message);
       } finally {
         setLoading(false);
       }
@@ -57,11 +80,12 @@ function Contact() {
   });
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Navbar />
       <section
         id="contact"
-        className="py-12 bg-gray-800 dark:bg-gray-900 relative min-h-screen"
+        className="py-12 min-h-screen"
+        style={{ backgroundColor: theme.palette.background.default }}
       >
         <div className="absolute top-2 left-2">
           <Link
@@ -73,153 +97,122 @@ function Contact() {
           </Link>
         </div>
 
-        <h2 className="text-3xl font-bold text-center text-indigo-500 dark:text-indigo-400 mb-8">
+        <Typography
+          variant="h4"
+          align="center"
+          color="primary"
+          gutterBottom
+        >
           Contact Me
-        </h2>
+        </Typography>
 
-        <div className="container mx-auto flex flex-col items-center">
+        <Container maxWidth="sm">
           <form
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md"
+            style={{
+              backgroundColor: "#fff",
+              padding: "20px",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            }}
           >
             {/* Name Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-gray-700 dark:text-gray-300 font-medium"
-              >
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                autoComplete="off"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
-                  errors.name && touched.name
-                    ? "border-red-500"
-                    : "border-gray-300 dark:border-gray-600"
-                }`}
-              />
-              {errors.name && touched.name && (
-                <p className="text-red-500 mt-1 text-sm">{errors.name}</p>
-              )}
-            </div>
+            <TextField
+              fullWidth
+              id="name"
+              name="name"
+              label="Your Name"
+              variant="outlined"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={Boolean(errors.name && touched.name)}
+              helperText={errors.name && touched.name ? errors.name : ""}
+              margin="normal"
+            />
 
             {/* Email Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 dark:text-gray-300 font-medium"
-              >
-                Your Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="off"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
-                  errors.email && touched.email
-                    ? "border-red-500"
-                    : "border-gray-300 dark:border-gray-600"
-                }`}
-              />
-              {errors.email && touched.email && (
-                <p className="text-red-500 mt-1 text-sm">{errors.email}</p>
-              )}
-            </div>
+            <TextField
+              fullWidth
+              id="email"
+              name="email"
+              label="Your Email"
+              variant="outlined"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={Boolean(errors.email && touched.email)}
+              helperText={errors.email && touched.email ? errors.email : ""}
+              margin="normal"
+            />
 
             {/* Subject Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="subject"
-                className="block text-gray-700 dark:text-gray-300 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                autoComplete="off"
-                value={values.subject}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
-                  errors.subject && touched.subject
-                    ? "border-red-500"
-                    : "border-gray-300 dark:border-gray-600"
-                }`}
-              />
-              {errors.subject && touched.subject && (
-                <p className="text-red-500 mt-1 text-sm">{errors.subject}</p>
-              )}
-            </div>
+            <TextField
+              fullWidth
+              id="subject"
+              name="subject"
+              label="Subject"
+              variant="outlined"
+              value={values.subject}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={Boolean(errors.subject && touched.subject)}
+              helperText={errors.subject && touched.subject ? errors.subject : ""}
+              margin="normal"
+            />
 
             {/* Message Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="message"
-                className="block text-gray-700 dark:text-gray-300 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                autoComplete="off"
-                value={values.message}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`mt-2 p-3 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white ${
-                  errors.message && touched.message
-                    ? "border-red-500"
-                    : "border-gray-300 dark:border-gray-600"
-                }`}
-              />
-              {errors.message && touched.message && (
-                <p className="text-red-500 mt-1 text-sm">{errors.message}</p>
-              )}
-            </div>
+            <TextField
+              fullWidth
+              id="message"
+              name="message"
+              label="Message"
+              variant="outlined"
+              multiline
+              rows={4}
+              value={values.message}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={Boolean(errors.message && touched.message)}
+              helperText={errors.message && touched.message ? errors.message : ""}
+              margin="normal"
+            />
 
             {/* Submit Button */}
-            <button
+            <Button
               type="submit"
-              className="w-full p-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition duration-300 flex justify-center items-center"
+              variant="contained"
+              color="primary"
+              fullWidth
               disabled={!(isValid && dirty) || loading}
+              style={{ marginTop: "20px" }}
             >
               {loading ? (
                 <span className="animate-pulse">Sending...</span>
               ) : (
                 "Send Message"
               )}
-            </button>
+            </Button>
 
             {/* Feedback Message */}
             {feedback && (
-              <p
-                className={`mt-4 text-center text-sm font-medium ${
-                  feedback.startsWith("✅")
-                    ? "text-green-500"
-                    : "text-red-500"
-                }`}
+              <Typography
+                variant="body2"
+                align="center"
+                style={{
+                  marginTop: "20px",
+                  color: feedback.startsWith("✅") ? "green" : "red",
+                }}
               >
                 {feedback}
-              </p>
+              </Typography>
             )}
           </form>
-        </div>
+        </Container>
       </section>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 
