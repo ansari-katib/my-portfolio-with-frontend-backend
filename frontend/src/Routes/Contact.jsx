@@ -56,11 +56,16 @@ function Contact() {
       setFeedback("");
 
       console.log(values);
+
+      const URL = "https://pbackend.up.railway.app/api/contact"
       try {
-        const response = await axios.post(
-          "https://pbackend.up.railway.app/api/contact",
+        const response = await axios.post(URL,
           // "http://localhost:5000/api/contact",
-          values
+          values,
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
+          },
         );
 
 
@@ -72,7 +77,7 @@ function Contact() {
         }
 
       } catch (error) {
-        setFeedback("❌ Something went wrong. Please try again.",error.message);
+        setFeedback(`❌ Something went wrong. Please try again. Error: ${error.message}`);
       } finally {
         setLoading(false);
       }
