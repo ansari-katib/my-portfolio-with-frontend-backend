@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
+import {
+  AppBar, Toolbar, IconButton, Box,
+  Typography, Menu, MenuItem, Button, useMediaQuery
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import "../Routes/Home.css";
-
+import { GITHUB, LINKEDIN_URL, TWITTER_URL } from '../constants/constants';
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = useState(null); // Mobile menu state
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -34,45 +33,48 @@ function Navbar() {
   };
 
   return (
-    <div className='bg-black flex justify-center items-center' >
+    <Box className="bg-black bg-opacity-50 flex justify-center items-center" sx={{ px: 2, py: 1 }}>
       <AppBar
         position="static"
         sx={{
-          borderRadius: 5,
-          backgroundColor: "#2E236C",
-          maxWidth: "70%",
-          display: "flex",
-          boxShadow: "2px 2px 32px rgba(255, 255, 255, 0.5)"
-        }}>
+          borderRadius: 3,
+          backgroundColor: "rgba(46, 35, 108, 0.6)",
+          width: '100%',
+          backdropFilter: "blur(10px)",
+          maxWidth: { xs: '95%', sm: '85%', md: '75%', lg: '65%' },
+          mx: 'auto',
+          boxShadow: "2px 2px 32px rgba(255, 255, 255, 0.5)",
+        }}
+      >
         <Toolbar>
           <Typography
-            varient="h4"
+            variant="h6"
             component="div"
             sx={{
               flexGrow: 1,
               fontWeight: 'bold',
-              textDecoration: 'none',
-              color: 'transparent', 
-              backgroundImage: 'linear-gradient(90deg, orange, yellow, pink)', // Define the gradient colors
-              backgroundSize: '200% 100%', 
-              backgroundPosition: 'right top', 
-              backgroundClip: 'text', 
-              WebkitBackgroundClip: 'text', // For Safari and Chrome support
-              transition: 'background-position 1s ease', // Add a transition effect for smoothness
-              animation: 'moveGradient 2s linear infinite', // Apply continuous animation
+              fontSize: { xs: '1.5rem', sm: '1.5rem', md: '1.5rem' , lg:'2rem' },
+              backgroundImage: 'linear-gradient(90deg, orange, yellow, pink)',
+              backgroundSize: '200% 100%',
+              backgroundPosition: 'right top',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              animation: 'moveGradient 2s linear infinite',
             }}
           >
             Hey It's Katib
           </Typography>
 
           {/* Desktop Links */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2, ml: 4 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             {navLinks.map(({ to, label }) => (
               <Button
                 key={to}
                 component={NavLink}
                 to={to}
                 sx={{
+                  fontSize: { xs: '1.5rem', sm: '1rem', md: '1.2rem' , lg:'1.4rem'},
                   color: 'white',
                   textTransform: 'none',
                   fontWeight: 'bold',
@@ -84,65 +86,41 @@ function Navbar() {
             ))}
           </Box>
 
-          {/* Social Media Icons */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              component="a"
-              href="https://www.linkedin.com/in/katib-ansari-95ab96252/"
-              target="_blank"
-              aria-label="LinkedIn"
-              sx={{ color: '#3559E0' }}
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://x.com/KatibAnsari3"
-              target="_blank"
-              aria-label="Twitter"
-              sx={{ color: '#4CB9E7' }}
-            >
-              <TwitterIcon />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://github.com/ansari-katib"
-              target="_blank"
-              aria-label="GitHub"
-              sx={{ color: 'white' }}
-            >
-              <GitHubIcon />
-            </IconButton>
-          </Box>
+          {/* Social Icons */}
+          {!isMobile && (
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <IconButton component="a" href={LINKEDIN_URL} target="_blank" sx={{ color: '#3559E0' }}>
+                <LinkedInIcon />
+              </IconButton>
+              <IconButton component="a" href={TWITTER_URL} target="_blank" sx={{ color: '#4CB9E7' }}>
+                <TwitterIcon />
+              </IconButton>
+              <IconButton component="a" href={GITHUB} target="_blank" sx={{ color: 'white' }}>
+                <GitHubIcon />
+              </IconButton>
+            </Box>
+          )}
 
-          {/* Hamburger Menu Icon for Mobile */}
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {/* Mobile Menu Icon */}
+          {isMobile && (
             <IconButton
               size="large"
-              aria-label="menu"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{ ml: 2 }}
             >
               <MenuIcon />
             </IconButton>
-          </Box>
+          )}
         </Toolbar>
 
         {/* Mobile Menu */}
         <Menu
           anchorEl={anchorElNav}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
           open={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
-          sx={{ display: { xs: 'block', md: 'none' } }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           {navLinks.map(({ to, label }) => (
             <MenuItem key={to} onClick={handleCloseNavMenu}>
@@ -160,39 +138,20 @@ function Navbar() {
               </Typography>
             </MenuItem>
           ))}
-          {/* Social Icons in Mobile Menu */}
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, gap: 2 }}>
-            <IconButton
-              component="a"
-              href="https://www.linkedin.com/in/katib-ansari-95ab96252/"
-              target="_blank"
-              aria-label="LinkedIn"
-              sx={{ color: '#3559E0' }}
-            >
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1, gap: 2 }}>
+            <IconButton component="a" href={LINKEDIN_URL} target="_blank" sx={{ color: '#3559E0' }}>
               <LinkedInIcon />
             </IconButton>
-            <IconButton
-              component="a"
-              href="https://x.com/KatibAnsari3"
-              target="_blank"
-              aria-label="Twitter"
-              sx={{ color: '#4CB9E7' }}
-            >
+            <IconButton component="a" href={TWITTER_URL} target="_blank" sx={{ color: '#4CB9E7' }}>
               <TwitterIcon />
             </IconButton>
-            <IconButton
-              component="a"
-              href="https://github.com/ansari-katib"
-              target="_blank"
-              aria-label="GitHub"
-              sx={{ color: 'black' }}
-            >
+            <IconButton component="a" href={GITHUB} target="_blank" sx={{ color: 'black' }}>
               <GitHubIcon />
             </IconButton>
           </Box>
         </Menu>
       </AppBar>
-    </div>
+    </Box>
   );
 }
 

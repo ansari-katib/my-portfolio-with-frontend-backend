@@ -1,36 +1,40 @@
 import React from "react";
-import image from "../assets/myImg2.png"
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import MY_IMAGE from '../assets/myimage.jpg';
+import MyLottiAnimation from "../Lotti/MyLottiAnimation";
 
 function AboutMe() {
 
-  const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js', 'Git', 'Core Java'];
+  const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js', 'Git' , 'GitHub', 'Core Java' , 'Material UI' ,'ShadeCN',  'socket.io' ];
 
 
   return (
     <>
       <Navbar />
-      <section id="about-me" className=" h-full py-16 bg-black ">
+      <MyLottiAnimation />
+
+      <section id="about-me" 
+      className=" h-full py-16 bg-black flex justify-center items-center min-h-[540px] ">
         <div className="container mx-auto text-center">
-          <div className="absolute top-2 left-2 ">
-            {/* Back to Home Button */}
+
+          {/* <div className="absolute top-2 left-2 ">
             <Link
               to="/"
               className="bg-indigo-600 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 flex items-center space-x-2"
             >
-              {/* Font Awesome Icon */}
               <i className="fas fa-arrow-left "></i>
             </Link>
-          </div>
+          </div> */}
+          
           <h2 className="text-3xl font-bold text-indigo-600 mb-8">About Me</h2>
           <div className="flex flex-col md:flex-row justify-center items-center">
             {/* Left Section (Profile Picture and Bio) */}
             <div className="flex justify-center items-center mb-8 md:mb-0 md:w-1/3">
               <div className="rounded-full overflow-hidden w-60 h-60 mb-4 shadow-lg">
                 <img
-                  src={image} // Replace with your image URL
+                  src={MY_IMAGE} // Replace with your image URL
                   alt="Kaitb Ansari"
                   className="object-contain w-full h-full bg-white"
                 />

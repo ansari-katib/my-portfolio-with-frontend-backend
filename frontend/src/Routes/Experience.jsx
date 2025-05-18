@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import MyLottiAnimation from "../Lotti/MyLottiAnimation";
 
 function Experience() {
   const experiences = [
@@ -18,16 +19,18 @@ function Experience() {
   return (
     <>
       <Navbar />
-      <section id="experience" className="py-12 bg-gray-900 text-gray-200">
-        <div className="absolute top-2 left-2">
-          {/* Back to Home Button */}
+      <MyLottiAnimation />
+      <section id="experience" className="py-12 bg-gray-900 text-gray-200 min-h-[80vh]">
+        
+        {/* <div className="absolute top-2 left-2">
           <Link
             to="/"
             className="bg-indigo-700 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-500 transition-all duration-300 flex items-center space-x-2"
           >
             <i className="fas fa-arrow-left"></i>
           </Link>
-        </div>
+        </div> */}
+        
         <h2 className="text-3xl font-bold text-center text-indigo-500 mb-8">Experience</h2>
         <div className="container mx-auto w-[90%]">
           {experiences.map((exp, index) => (

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import MyLottiAnimation from "../Lotti/MyLottiAnimation";
 
 function Education() {
   const educationDetails = [
@@ -32,17 +33,18 @@ function Education() {
   return (
     <>
       <Navbar />
+      <MyLottiAnimation />
       <section id="education" className="py-12 bg-gray-900 text-gray-200">
-        <div className="absolute top-2 left-2">
-          {/* Back to Home Button */}
+        {/* <div className="absolute top-2 left-2">
           <Link
             to="/"
             className="bg-indigo-600 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 flex items-center space-x-2"
           >
-            {/* Font Awesome Icon */}
             <i className="fas fa-arrow-left "></i>
           </Link>
-        </div>
+        </div> 
+        */}
+
         <h2 className="text-3xl font-bold text-center text-indigo-500 mb-8">Education</h2>
         <div className="container mx-auto w-[90%]">
           {educationDetails.map((edu, index) => (

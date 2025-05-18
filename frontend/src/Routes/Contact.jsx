@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import MyLottiAnimation from "../Lotti/MyLottiAnimation";
 
 const initialValues = {
   name: "",
@@ -87,21 +88,21 @@ function Contact() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
+      <MyLottiAnimation />
       <section
         id="contact"
-        className="py-12 min-h-screen"
-        style={{ backgroundColor: theme.palette.background.default }}
+        className=" py-12 min-h-screen"
       >
-        <div className="absolute top-2 left-2">
+         {/* <div className="absolute top-2 left-2">
           <Link
             to="/"
-            className="bg-indigo-600 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 flex items-center space-x-2"
+            className="bg-indigo-700 text-white p-2 rounded-lg shadow-lg hover:bg-indigo-500 transition-all duration-300 flex items-center space-x-2"
           >
             <i className="fas fa-arrow-left"></i>
-            <span>Home</span>
           </Link>
-        </div>
-
+        </div> 
+       */}
+       
         <Typography
           variant="h4"
           align="center"

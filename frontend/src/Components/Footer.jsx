@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter'; 
+import { GITHUB, LINKEDIN_URL, TWITTER_URL } from "../constants/constants";
 
 function Footer() {
   return (
@@ -18,13 +19,13 @@ function Footer() {
 
         {/* Footer Right - Social Media Links */}
         <div className="flex justify-center items-center gap-2">
-              <NavLink to="#">
+              <NavLink to={LINKEDIN_URL}>
                 <li className="list-none"><LinkedInIcon sx={{color:"#3559E0"}} /></li>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to={TWITTER_URL}>
                 <li className="list-none"><TwitterIcon sx={{color:"#4CB9E7"}} /></li>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to={GITHUB}>
                 <li className="list-none"><GitHubIcon sx={{color:""}} /></li>
               </NavLink>
             </div>
