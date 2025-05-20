@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router , Routes , Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import EducationPage from './Routes/Education'
 import HomePage from './Routes/Home'
@@ -7,6 +7,8 @@ import ExperiencePage from './Routes/Experience'
 import ProjectsPage from './Routes/Projects'
 import ContactPage from './Routes/Contact'
 import AboutMePage from './Routes/AboutMe'
+
+
 
 function App() {
 
@@ -40,16 +42,19 @@ function App() {
 
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path='/' element={<HomePage /> } />
-        <Route path='/education' element={<EducationPage /> } />
-        <Route path='/experience' element={<ExperiencePage /> } />
-        <Route path='/projects' element={<ProjectsPage /> } />
-        <Route path='/contact' element={<ContactPage /> } />
-        <Route path='/about' element={<AboutMePage /> } />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/education' element={<EducationPage />} />
+          <Route path='/experience' element={<ExperiencePage />} />
+          <Route path='/projects' element={<ProjectsPage />} />
+          <Route path='/contact' element={<ContactPage />} />
+          <Route path='/about' element={<AboutMePage />} />
+
+
+        </Routes>
+      </Router>
+     
     </>
   )
 }

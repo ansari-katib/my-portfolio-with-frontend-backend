@@ -8,7 +8,7 @@ import { GITHUB, LINKEDIN_URL, TWITTER_URL } from "../constants/constants";
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 border-t-2 border-gray-700 ">
+    <footer className="relative bg-gray-900 text-gray-300 py-10 border-t-2 border-gray-700 ">
       <div className="container mx-auto flex flex-col md:flex-row justify-evenly items-center">
         
         {/* Footer Left - Name and Copyright */}
