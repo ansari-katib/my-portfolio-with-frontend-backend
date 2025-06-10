@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import MY_IMAGE from '../assets/myimage.jpg';
-import MyLottiAnimation from "../Lotti/MyLottiAnimation";
+import { BackgroundBeamsDemo } from '../background-animation/Bg';
 
 function AboutMe() {
 
@@ -13,7 +13,7 @@ function AboutMe() {
   return (
     <>
       <Navbar />
-      <MyLottiAnimation />
+      <BackgroundBeamsDemo />
 
       <section id="about-me" 
       className=" h-full py-16 bg-black flex justify-center items-center min-h-[540px] ">

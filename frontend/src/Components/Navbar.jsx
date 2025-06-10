@@ -33,7 +33,7 @@ function Navbar() {
   };
 
   return (
-    <Box className="bg-black bg-opacity-50 flex justify-center items-center" sx={{ px: 2, py: 1 }}>
+    <Box className=" flex justify-center items-center" sx={{ px: 2, py: 1 }}>
       <AppBar
         position="static"
         sx={{

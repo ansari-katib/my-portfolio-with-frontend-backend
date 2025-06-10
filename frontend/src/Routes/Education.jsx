@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import MyLottiAnimation from "../Lotti/MyLottiAnimation";
+import { BackgroundBeamsDemo } from '../background-animation/Bg';
+
 
 function Education() {
   const educationDetails = [
@@ -33,7 +34,7 @@ function Education() {
   return (
     <>
       <Navbar />
-      <MyLottiAnimation />
+      <BackgroundBeamsDemo />
       <section id="education" className="py-12 bg-gray-900 text-gray-200">
         {/* <div className="absolute top-2 left-2">
           <Link

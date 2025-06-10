@@ -4,16 +4,16 @@ import "../Routes/Home.css";
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import MY_IMAGE from '../assets/myimage.jpg';
-import MyLottiAnimation from '../Lotti/MyLottiAnimation';
+import { BackgroundBeamsDemo } from '../background-animation/Bg';
 
 function Home() {
   return (
     <>
-      <MyLottiAnimation />
+      <BackgroundBeamsDemo />
       <Navbar />
 
       {/* Main Section */}
-      <div className="relative z-10 min-h-[81vh] bg-black bg-opacity-50 w-full py-12">
+      <div className="relative z-10 min-h-[81vh]  w-full py-12">
         <div className='flex items-center justify-center min-h-full mt-20'>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 sm:px-10 md:px-16 lg:px-20">
             {/* Image Section */}

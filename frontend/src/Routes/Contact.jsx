@@ -8,7 +8,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import MyLottiAnimation from "../Lotti/MyLottiAnimation";
+import { BackgroundBeamsDemo } from '../background-animation/Bg';
 
 const initialValues = {
   name: "",
@@ -88,7 +88,7 @@ function Contact() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <MyLottiAnimation />
+      <BackgroundBeamsDemo />
       <section
         id="contact"
         className=" py-12 min-h-screen"
