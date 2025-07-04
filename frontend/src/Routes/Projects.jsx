@@ -16,7 +16,7 @@ function Projects() {
             title: "Netflix Frontpage Clone",
             description: "A replica of the Netflix frontpage created using pure HTML and CSS, styled for accuracy and responsiveness.",
             techStack: ["HTML", "CSS"],
-            link: "https://nf-web.netlify.app/", // Add actual link to project if available
+            link: "https://nf-web.netlify.app/", 
         },
         {
             title: "Fast Food E-Commerce Website",
@@ -40,7 +40,7 @@ function Projects() {
                 "Axios",
                 "Tailwind CSS",
                 "ShadCN"],
-            link: "#", // Add actual link to project if available
+            link: "https://ansari-chat-app.netlify.app",
         }
     ];
 
