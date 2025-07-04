@@ -7,7 +7,7 @@ import { BackgroundBeamsDemo } from '../background-animation/Bg';
 
 function AboutMe() {
 
-  const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js', 'Git' , 'GitHub', 'Core Java' , 'Material UI' ,'ShadeCN',  'socket.io' ];
+  const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js', 'Git', 'GitHub', 'Core Java', 'Material UI', 'ShadeCN', 'socket.io', 'accernity ui', 'Redux', 'zustand'];
 
 
   return (
@@ -15,8 +15,8 @@ function AboutMe() {
       <Navbar />
       <BackgroundBeamsDemo />
 
-      <section id="about-me" 
-      className=" h-full py-16 bg-black flex justify-center items-center min-h-[540px] ">
+      <section id="about-me"
+        className=" h-full py-16 bg-transparent flex justify-center items-center min-h-[540px] ">
         <div className="container mx-auto text-center">
 
           {/* <div className="absolute top-2 left-2 ">
@@ -27,9 +27,9 @@ function AboutMe() {
               <i className="fas fa-arrow-left "></i>
             </Link>
           </div> */}
-          
+
           <h2 className="text-3xl font-bold text-indigo-600 mb-8">About Me</h2>
-          <div className="flex flex-col md:flex-row justify-center items-center">
+          <div className="flex flex-col md:flex-row mx-20 justify-center items-center">
             {/* Left Section (Profile Picture and Bio) */}
             <div className="flex justify-center items-center mb-8 md:mb-0 md:w-1/3">
               <div className="rounded-full overflow-hidden w-60 h-60 mb-4 shadow-lg">
@@ -61,7 +61,7 @@ function AboutMe() {
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-gray-700">
                   {skills.map((item, index) => {
                     return (
-                      <li className="bg-white p-4 rounded-lg shadow-md text-center" key={index}>
+                      <li className="bg-white p-4 rounded-lg shadow-md text-center " key={index}>
                         <h4 className="font-bold text-indigo-600">{item}</h4>
                       </li>
                     )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
   AppBar, Toolbar, IconButton, Box,
   Typography, Menu, MenuItem, Button, useMediaQuery
@@ -33,7 +33,7 @@ function Navbar() {
   };
 
   return (
-    <Box className=" flex justify-center items-center" sx={{ px: 2, py: 1 }}>
+    <Box className=" flex justify-center items-center mt-10" sx={{ px: 2, py: 1 }}>
       <AppBar
         position="static"
         sx={{
@@ -48,7 +48,7 @@ function Navbar() {
       >
         <Toolbar>
           <Typography
-            variant="h6"
+            variant="h3"
             component="div"
             sx={{
               flexGrow: 1,
@@ -63,7 +63,9 @@ function Navbar() {
               animation: 'moveGradient 2s linear infinite',
             }}
           >
+            <Link to='/' >
             Hey It's Katib
+            </Link>
           </Typography>
 
           {/* Desktop Links */}
@@ -74,7 +76,7 @@ function Navbar() {
                 component={NavLink}
                 to={to}
                 sx={{
-                  fontSize: { xs: '1.5rem', sm: '1rem', md: '1.2rem' , lg:'1.4rem'},
+                  fontSize: { xs: '1.5rem', sm: '1rem', md: '1rem' , lg:'1rem'},
                   color: 'white',
                   textTransform: 'none',
                   fontWeight: 'bold',
