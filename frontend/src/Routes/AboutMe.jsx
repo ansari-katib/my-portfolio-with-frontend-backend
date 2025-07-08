@@ -29,7 +29,7 @@ function AboutMe() {
           </div> */}
 
           <h2 className="text-3xl font-bold text-indigo-600 mb-8">About Me</h2>
-          <div className="flex flex-col md:flex-row mx-20 justify-center items-center">
+          <div className="flex flex-col md:flex-row md:mx-20 justify-center items-center">
             {/* Left Section (Profile Picture and Bio) */}
             <div className="flex justify-center items-center mb-8 md:mb-0 md:w-1/3">
               <div className="rounded-full overflow-hidden w-60 h-60 mb-4 shadow-lg">
