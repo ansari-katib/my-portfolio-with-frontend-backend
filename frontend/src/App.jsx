@@ -6,7 +6,6 @@ import HomePage from './Routes/Home'
 import ExperiencePage from './Routes/Experience'
 import ProjectsPage from './Routes/Projects'
 import ContactPage from './Routes/Contact'
-import AboutMePage from './Routes/AboutMe'
 
 
 
@@ -49,7 +48,6 @@ function App() {
           <Route path='/experience' element={<ExperiencePage />} />
           <Route path='/projects' element={<ProjectsPage />} />
           <Route path='/contact' element={<ContactPage />} />
-          <Route path='/about' element={<AboutMePage />} />
 
 
         </Routes>

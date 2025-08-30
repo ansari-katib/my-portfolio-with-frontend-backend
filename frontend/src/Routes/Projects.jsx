@@ -66,14 +66,14 @@ function Projects() {
   ];
 
   const iconMap = {
-    React: <FaReact size={16} />,
-    "React.js": <FaReact size={16} />,
-    Node: <FaNodeJs size={16} />,
+    React: <FaReact size={16} className="text-blue-300" />,
+    "React.js": <FaReact size={16} className="text-blue-300" />,
+    Node: <FaNodeJs size={16} className="text-green-500" />,
     Nodejs: <FaNodeJs size={16} />,
-    HTML: <FaHtml5 size={16} />,
-    CSS: <FaCss3Alt size={16} />,
-    JavaScript: <FaJsSquare size={16} />,
-    MongoDB: <SiMongodb size={16} />,
+    HTML: <FaHtml5 size={16} className="text-orange-500" />,
+    CSS: <FaCss3Alt size={16} className="text-blue-300" />,
+    JavaScript: <FaJsSquare size={16} className="text-yellow-300" />,
+    MongoDB: <SiMongodb size={16} className="text-green-500" />,
     Express: <SiExpress size={16} />,
     "Tailwind CSS": <SiTailwindcss size={16} />,
     Git: <FaGitAlt size={16} />,
@@ -108,7 +108,7 @@ function Projects() {
                     {project.techStack.map((tech, i) => (
                       <span
                         key={i}
-                        className="bg-gradient-to-r from-indigo-700 to-blue-500 px-4 py-2 rounded-xl flex items-center gap-1"
+                        className="bg-gradient-to-r from-indigo-700 to-blue-500 px-2 py-1 rounded-xl flex items-center gap-1"
                       >
                         {iconMap[tech] || <CodeIcon fontSize="small" />}
                         {tech}

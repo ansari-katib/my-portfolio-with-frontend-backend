@@ -6,6 +6,7 @@ import Footer from '../Components/Footer';
 import MY_IMAGE from '../assets/myimage.jpg';
 import { BackgroundBeamsDemo } from '../background-animation/Bg';
 import { TimelineDemo } from '../Components/ScrollComp';
+import MyProject from '../Components/MyProject';
 
 function Home() {
   return (
@@ -47,12 +48,6 @@ function Home() {
 
               <div className="mt-10 flex flex-wrap justify-center md:justify-start gap-4">
                 <Link
-                  to="/about"
-                  className="bg-indigo-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-indigo-600 transition-all duration-300"
-                >
-                  About Me
-                </Link>
-                <Link
                   to="/contact"
                   className="bg-indigo-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-indigo-600 transition-all duration-300"
                 >
@@ -64,6 +59,7 @@ function Home() {
         </div>
       </div>
       <TimelineDemo />
+      <MyProject />
       <Footer />
     </>
   );
