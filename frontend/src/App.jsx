@@ -6,7 +6,7 @@ import HomePage from './Routes/Home'
 import ExperiencePage from './Routes/Experience'
 import ProjectsPage from './Routes/Projects'
 import ContactPage from './Routes/Contact'
-
+import './App.css';
 
 
 function App() {

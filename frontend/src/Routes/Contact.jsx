@@ -55,12 +55,12 @@ function Contact() {
     <>
       <Navbar />
       <BackgroundBeamsDemo />
-      <section className="py-12 min-h-screen flex flex-col items-center ">
+      <section className="py-12 px-4 min-h-screen flex flex-col items-center ">
         <h2 className="text-4xl md:text-5xl font-bold text-indigo-500 mb-8 text-center">Contact Me</h2>
 
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-lg p-8 rounded-xl bg-indigo-500/20 shadow-2xl space-y-4"
+          className="w-full max-w-lg p-4 sm:p-8 rounded-xl bg-indigo-500/20 shadow-2xl space-y-4"
         >
           {/* Name */}
           <div className="flex flex-col relative">

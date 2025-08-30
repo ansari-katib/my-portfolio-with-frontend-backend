@@ -38,7 +38,7 @@ function Navbar() {
         position="static"
         sx={{
           borderRadius: 3,
-          backgroundColor: "rgba(46, 35, 108, 0.6)",
+          backgroundColor: "rgba(46, 35, 108, 0.9)",
           width: '100%',
           backdropFilter: "blur(10px)",
           maxWidth: { xs: '95%', sm: '85%', md: '75%', lg: '65%' },

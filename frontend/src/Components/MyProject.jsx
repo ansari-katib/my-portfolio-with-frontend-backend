@@ -56,12 +56,13 @@ const MyProject = () => {
     return (
         <>
             <section id="projects" className="py-12 text-gray-200">
-                <h2 className="text-5xl font-bold text-center text-indigo-500 mb-8">Projects</h2>
-                <div className="container mx-auto grid grid-cols-1 w-[90%] md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 className="text-5xl font-bold text-center  text-indigo-500 mb-8">Projects</h2>
+                <div className="container mx-auto grid justify-items-center grid-cols-1 w-[90%] md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className="relative group max-w-2xl rounded-2xl p-[3px] bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-500 shadow-xl hover:scale-105 transition-transform duration-200"
+                            className="relative group max-w-xl rounded-2xl p-[3px] bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-500 shadow-xl hover:scale-105 transition-transform duration-200"
                         >
                             <div className="bg-gray-900/70 backdrop-blur-md rounded-2xl p-2 h-full flex flex-col">
                                 {/* Project Image */}
@@ -104,7 +105,7 @@ const MyProject = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                    </div>
                 <div className='mt-5 md:mt-10 pl-6 md:pl-32'>
                     <a href={'/projects'} className='text-indigo-500 font-medium text-xl' >
                         See More of my project ...
