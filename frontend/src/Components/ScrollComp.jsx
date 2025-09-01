@@ -49,7 +49,7 @@ export function TimelineDemo() {
                         <li>Database Management Systems (DBMS)</li>
                         <li>Operating Systems</li>
                         <li>Computer Networks</li>
-                        <li>Web Development (HTML, CSS, JavaScript, MERN)</li>
+                        <li>Web Development (HTML, CSS, JavaScript)</li>
                         <li>Software Engineering</li>
                         <li>Java & Object-Oriented Programming (OOPs)</li>
                     </ul>
