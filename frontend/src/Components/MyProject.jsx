@@ -2,6 +2,7 @@ import React from 'react'
 import netflixImg from "../assets/netflix.png";
 import tour_travel_image from "../assets/tour_travel.png";
 import resturant_app_image from "../assets/resturant_app.png";
+import chatify from '../assets/chatify.png'
 
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from "react-icons/fa";
 import { SiMongodb, SiExpress, SiTailwindcss } from "react-icons/si";
@@ -37,6 +38,36 @@ const MyProject = () => {
             link: "https://ansari-resturant.netlify.app/",
             img: resturant_app_image,
         },
+
+        {
+            title: "Chatify",
+            description:
+                "I built this full-stack application to help users learn languages by connecting with people worldwide. It lets you chat or video call based on the language you're learning and customize the UI colors to match your preference, making the experience engaging and personal.",
+            techStack: [
+                "React.js",
+                "Express.js",
+                "React Router",
+                "Stream Chat",
+                "React Query",
+                "Zustand",
+                "Tailwind CSS",
+                "Lucide Icons",
+                "React Icons",
+                "React Hot Toast",
+                "Axios",
+                "Node.js",
+                "MongoDB",
+                "Mongoose",
+                "CORS",
+                "bcrypt",
+                "dotenv",
+                "jsonwebtoken",
+                "Framer Motion"
+            ],
+            link: "https://stream-web-chat-app-1.onrender.com/",
+            img: chatify,
+        }
+
     ]
 
     const iconMap = {
@@ -105,7 +136,7 @@ const MyProject = () => {
                             </div>
                         </div>
                     ))}
-                    </div>
+                </div>
                 <div className='mt-5 md:mt-10 pl-6 md:pl-32'>
                     <a href={'/projects'} className='text-indigo-500 font-medium text-xl' >
                         See More of my project ...
