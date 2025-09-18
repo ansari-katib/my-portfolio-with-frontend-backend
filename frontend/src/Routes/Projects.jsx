@@ -6,6 +6,7 @@ import netflixImg from "../assets/netflix.png";
 import tour_travel_image from "../assets/tour_travel.png";
 import chat_app_image from "../assets/chat_app.png";
 import resturant_app_image from "../assets/resturant_app.png";
+import chatify from '../assets/chatify.png'
 
 // React Icons
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from "react-icons/fa";
@@ -63,6 +64,34 @@ function Projects() {
       link: "https://ansari-chat-app.netlify.app",
       img: chat_app_image,
     },
+    {
+      title: "Chatify",
+      description:
+        "I built this full-stack application to help users learn languages by connecting with people worldwide. It lets you chat or video call based on the language you're learning and customize the UI colors to match your preference, making the experience engaging and personal.",
+      techStack: [
+        "React.js",
+        "Express.js",
+        "React Router",
+        "Stream Chat",
+        "React Query",
+        "Zustand",
+        "Tailwind CSS",
+        "Lucide Icons",
+        "React Icons",
+        "React Hot Toast",
+        "Axios",
+        "Node.js",
+        "MongoDB",
+        "Mongoose",
+        "CORS",
+        "bcrypt",
+        "dotenv",
+        "jsonwebtoken",
+        "Framer Motion"
+      ],
+      link: "https://stream-web-chat-app-1.onrender.com/",
+      img: chatify,
+    }
   ];
 
   const iconMap = {
